@@ -1,0 +1,28 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>gwrbc</groupId>
+		<artifactId>hecsp_ssm</artifactId>
+		<version>4.0.1-SNAPSHOTS</version>
+	</parent>
+	<artifactId>hecsp-webapp</artifactId>
+	<packaging>war</packaging>
+	<name>hecsp-webapp</name>
+	<description>机构版养老系统</description>
+	<dependencies>
+		<dependency>
+			<groupId>gwrbc</groupId>
+			<artifactId>gw-ec-common</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>gwrbc</groupId>
+			<artifactId>gw-ec-set</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>hecsp-webapp</finalName>
+	</build>
+</project>

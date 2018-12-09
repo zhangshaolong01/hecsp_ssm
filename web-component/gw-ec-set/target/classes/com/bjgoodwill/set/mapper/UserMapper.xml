@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.bjgoodwill.set.mapper.User">
+ <!--  	cache – 给定命名空间的缓存配置。
+		cache-ref – 其他命名空间缓存配置的引用。
+		resultMap – 是最复杂也是最强大的元素，用来描述如何从数据库结果集中来加载对象。
+		parameterMap – 已废弃！老式风格的参数映射。内联参数是首选,这个元素可能在将来被移除，这里不会记录。
+		sql – 可被其他语句引用的可重用语句块。
+		insert – 映射插入语句
+		update – 映射更新语句
+		delete – 映射删除语句
+		select – 映射查询语句-->
+ 
+ 	<!-- <resultMap type="com.bjgoodwill.set.model.User" id="user">
+ 		
+ 	</resultMap> -->
+ 
+ 	<!-- 插入insert -->
+ 	<insert id="insertUser" parameterType="com.bjgoodwill.set.model.User">
+ 		insert into user (username,password,nickname,age,sex,signature)
+ 		values (#{userName},#{password},#{nickName},#{age},#{sex},#{signature})
+ 	</insert>
+ 	
+ 	<!-- 查询select -->
+ 	<select id="selectUser" parameterType="string" resultType="com.bjgoodwill.set.model.User">
+ 		select * from user where username = #{username}
+ 	</select>
+ 	<!-- 查询用户列表 -->
+ 	<select id="selectUserList" parameterType="String" resultType="com.bjgoodwill.set.model.User">
+ 		select * from user  where 1=1 
+ 		<if test="_parameter  != null and _parameter  != ''">
+ 			and nickName = #{nickName}
+ 		</if>
+ 		order by id
+ 	</select>
+ 	
+ 	<!-- 更新update -->
+ 	<update id="updateUser" parameterType="com.bjgoodwill.set.model.User">
+ 		update user set password = #{password},userName = #{userName},
+ 		nickName = #{nickName},age = #{age},sex = #{sex},signature = #{signature}
+ 		where id = #{id}
+ 	</update>
+ 	<!-- 删除delete -->
+ 	<delete id="deleteUser" parameterType="com.bjgoodwill.set.model.User">
+ 		delete from user where id = #{id}
+ 	</delete>
+ 	
+ </mapper>
