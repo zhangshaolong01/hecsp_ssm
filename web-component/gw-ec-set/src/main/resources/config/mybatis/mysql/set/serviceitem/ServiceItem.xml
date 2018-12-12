@@ -1,0 +1,541 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="com.bjgoodwill.set.serviceitem.domain.ServiceItem">
+	<typeAlias alias="serviceItem" type="com.bjgoodwill.set.serviceitem.domain.ServiceItem" />
+	<!-- 服务项 (tb_service_item) -->
+	<resultMap id="Result" class="serviceItem">
+       <result column="service_item_id" property="serviceItemId"/>
+       <result column="business_type" property="businessType"/>
+       <result column="serviceitem_category_code" property="serviceitemCategoryCode"/>
+       <result column="service_item_name" property="serviceItemName"/>
+       <result column="service_item_code" property="serviceItemCode"/>
+       <result column="working_hours" property="workingHours"/>
+       <result column="service_price" property="servicePrice"/>
+       <result column="monthly_price" property="monthlyPrice"/>
+       <result column="subsidy_type" property="subsidyType"/>
+       <result column="maintenance_type" property="maintenanceType"/>
+       <result column="service_content" property="serviceContent"/>
+       <result column="service_standards" property="serviceStandards"/>
+       <result column="status" property="status"/>
+       <result column="valid_flag" property="validFlag"/>
+       <result column="create_time" property="createTime"/>
+       <result column="update_time" property="updateTime"/>
+       <result column="operate_man" property="operateMan"/>
+       <result column="operate_reason" property="operateReason"/>
+       <result column="institution_id" property="institutionId"/>
+       <result column="slv" property="slv"/>
+       <result column="spbm" property="spbm"/>
+	</resultMap>
+	
+	<resultMap id="ListResult" class="serviceItem">
+       <result column="service_item_id" property="serviceItemId"/>
+       <result column="business_type" property="businessType"/>
+       <result column="serviceitem_category_code" property="serviceitemCategoryCode"/>
+       <result column="service_item_name" property="serviceItemName"/>
+       <result column="service_item_code" property="serviceItemCode"/>
+       <result column="working_hours" property="workingHours"/>
+       <result column="service_price" property="servicePrice"/>
+       <result column="monthly_price" property="monthlyPrice"/>
+       <result column="subsidy_type" property="subsidyType"/>
+       <result column="maintenance_type" property="maintenanceType"/>
+       <result column="service_content" property="serviceContent"/>
+       <result column="service_standards" property="serviceStandards"/>
+       <result column="status" property="status"/>
+       <result column="valid_flag" property="validFlag"/>
+       <result column="create_time" property="createTime"/>
+       <result column="update_time" property="updateTime"/>
+       <result column="operate_man" property="operateMan"/>
+       <result column="operate_reason" property="operateReason"/>
+       <result column="institution_id" property="institutionId"/>
+       <result column="slv" property="slv"/>
+       <result column="spbm" property="spbm"/>
+	</resultMap>
+
+	<sql id="Where">
+		<isNotEmpty prepend="and" property="serviceItemId">
+			a.service_item_id=#serviceItemId#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="businessType">
+			a.business_type in ($businessType$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="serviceitemCategoryCode">
+			a.serviceitem_category_code in ($serviceitemCategoryCode$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="serviceItemName">
+			a.service_item_name like '%$serviceItemName$%'
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="serviceItemCode">
+			a.service_item_code=#serviceItemCode#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="workingHours">
+			a.working_hours=#workingHours#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="servicePrice">
+			a.service_price=#servicePrice#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="monthlyPrice">
+			a.monthly_price=#monthlyPrice#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="subsidyType">
+			a.subsidy_type in ($subsidyType$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="maintenanceType">
+			a.maintenance_type in ($maintenanceType$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="serviceContent">
+			a.service_content=#serviceContent#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="status">
+			a.status in ($status$)
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="validFlag">
+			a.valid_flag=#validFlag#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="createTime">
+			a.create_time=#createTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="updateTime">
+			a.update_time=#updateTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="operateMan">
+			a.operate_man=#operateMan#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="operateReason">
+			a.operate_reason=#operateReason#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="institutionId">
+			(a.institution_id=#institutionId# OR a.maintenance_type = '0')
+		</isNotEmpty>
+	</sql>
+	
+	<sql id="ModifyWhere">
+		<isNotEmpty prepend="and" property="where.serviceItemId">
+			service_item_id=#where.serviceItemId#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="where.businessType">
+			business_type=#where.businessType#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="where.serviceitemCategoryCode">
+			serviceitem_category_code=#where.serviceitemCategoryCode#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="where.serviceItemName">
+			service_item_name=#where.serviceItemName#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="where.serviceItemCode">
+			service_item_code=#where.serviceItemCode#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="where.workingHours">
+			working_hours=#where.workingHours#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="where.servicePrice">
+			service_price=#where.servicePrice#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="where.monthlyPrice">
+			monthly_price=#where.monthlyPrice#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="where.subsidyType">
+			subsidy_type=#where.subsidyType#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="where.maintenanceType">
+			maintenance_type=#where.maintenanceType#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="where.serviceContent">
+			service_content=#where.serviceContent#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="where.validFlag">
+			valid_flag=#where.validFlag#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="where.createTime">
+			create_time=#where.createTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="where.updateTime">
+			update_time=#where.updateTime#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="where.operateMan">
+			operate_man=#where.operateMan#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="where.operateReason">
+			operate_reason=#where.operateReason#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="where.institutionId">
+			institution_id=#where.institutionId#
+		</isNotEmpty>
+	</sql>
+	
+	<insert id="insert" parameterClass="serviceItem">
+		insert into tb_service_item (
+		<dynamic prepend="">
+			<isNotEmpty prepend="" property="serviceItemId">
+				service_item_id
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="businessType">
+				business_type
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="serviceitemCategoryCode">
+				serviceitem_category_code
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="serviceItemName">
+				service_item_name
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="serviceItemCode">
+				service_item_code
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="workingHours">
+				working_hours
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="servicePrice">
+				service_price
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="monthlyPrice">
+				monthly_price
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="subsidyType">
+				subsidy_type
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="maintenanceType">
+				maintenance_type
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="serviceContent">
+				service_content
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="serviceStandards">
+				service_standards
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="validFlag">
+				valid_flag
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="createTime">
+				create_time
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="updateTime">
+				update_time
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="operateMan">
+				operate_man
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="operateReason">
+				operate_reason
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="institutionId">
+				institution_id
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="slv">
+				slv
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="spbm">
+				spbm
+			</isNotEmpty>
+		</dynamic>
+		) values (
+		<dynamic prepend="">
+	       	<isNotEmpty prepend="" property="serviceItemId">
+				#serviceItemId#
+			</isNotEmpty>
+	       	<isNotEmpty prepend="," property="businessType">
+				#businessType#
+			</isNotEmpty>
+	       	<isNotEmpty prepend="," property="serviceitemCategoryCode">
+				#serviceitemCategoryCode#
+			</isNotEmpty>
+	       	<isNotEmpty prepend="," property="serviceItemName">
+				#serviceItemName#
+			</isNotEmpty>
+	       	<isNotEmpty prepend="," property="serviceItemCode">
+				#serviceItemCode#
+			</isNotEmpty>
+	       	<isNotEmpty prepend="," property="workingHours">
+				#workingHours#
+			</isNotEmpty>
+	       	<isNotEmpty prepend="," property="servicePrice">
+				#servicePrice#
+			</isNotEmpty>
+	       	<isNotEmpty prepend="," property="monthlyPrice">
+				#monthlyPrice#
+			</isNotEmpty>
+	       	<isNotEmpty prepend="," property="subsidyType">
+				#subsidyType#
+			</isNotEmpty>
+	       	<isNotEmpty prepend="," property="maintenanceType">
+				#maintenanceType#
+			</isNotEmpty>
+	       	<isNotEmpty prepend="," property="serviceContent">
+				#serviceContent#
+			</isNotEmpty>
+	       	<isNotEmpty prepend="," property="serviceStandards">
+				#serviceStandards#
+			</isNotEmpty>
+	       	<isNotEmpty prepend="," property="validFlag">
+				#validFlag#
+			</isNotEmpty>
+	       	<isNotEmpty prepend="," property="createTime">
+				#createTime#
+			</isNotEmpty>
+	       	<isNotEmpty prepend="," property="updateTime">
+				#updateTime#
+			</isNotEmpty>
+	       	<isNotEmpty prepend="," property="operateMan">
+				#operateMan#
+			</isNotEmpty>
+	       	<isNotEmpty prepend="," property="operateReason">
+				#operateReason#
+			</isNotEmpty>
+	       	<isNotEmpty prepend="," property="institutionId">
+				#institutionId#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="slv">
+				#slv#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="spbm">
+				#spbm#
+			</isNotEmpty>
+		</dynamic>
+		)
+	</insert>
+	
+	<update id="update" parameterClass="serviceItem">
+		update tb_service_item set
+		<dynamic prepend="">
+			<isNotNull prepend="" property="serviceItemId">
+				service_item_id=#serviceItemId#
+			</isNotNull>
+			<isNotNull prepend="," property="businessType">
+				business_type=#businessType#
+			</isNotNull>
+			<isNotNull prepend="," property="serviceitemCategoryCode">
+				serviceitem_category_code=#serviceitemCategoryCode#
+			</isNotNull>
+			<isNotNull prepend="," property="serviceItemName">
+				service_item_name=#serviceItemName#
+			</isNotNull>
+			<isNotNull prepend="," property="serviceItemCode">
+				service_item_code=#serviceItemCode#
+			</isNotNull>
+			<isNotNull prepend="," property="workingHours">
+				working_hours=#workingHours#
+			</isNotNull>
+			<isNotNull prepend="," property="servicePrice">
+				service_price=#servicePrice#
+			</isNotNull>
+			<isNotNull prepend="," property="monthlyPrice">
+				monthly_price=#monthlyPrice#
+			</isNotNull>
+			<isNotNull prepend="," property="subsidyType">
+				subsidy_type=#subsidyType#
+			</isNotNull>
+			<isNotNull prepend="," property="maintenanceType">
+				maintenance_type=#maintenanceType#
+			</isNotNull>
+			<isNotNull prepend="," property="serviceContent">
+				service_content=#serviceContent#
+			</isNotNull>
+			<isNotNull prepend="," property="serviceStandards">
+				service_standards=#serviceStandards#
+			</isNotNull>
+			<isNotNull prepend="," property="status">
+				status=#status#
+			</isNotNull>
+			<isNotNull prepend="," property="validFlag">
+				valid_flag=#validFlag#
+			</isNotNull>
+			<isNotNull prepend="," property="createTime">
+				create_time=#createTime#
+			</isNotNull>
+			<isNotNull prepend="," property="updateTime">
+				update_time=#updateTime#
+			</isNotNull>
+			<isNotNull prepend="," property="operateMan">
+				operate_man=#operateMan#
+			</isNotNull>
+			<isNotNull prepend="," property="operateReason">
+				operate_reason=#operateReason#
+			</isNotNull>
+			<isNotNull prepend="," property="institutionId">
+				institution_id=#institutionId#
+			</isNotNull>
+			<isNotEmpty prepend="," property="slv">
+				slv=#slv#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="spbm">
+				spbm=#spbm#
+			</isNotEmpty>
+		</dynamic>
+		where 1=1
+		<dynamic prepend="">
+			<include refid="ModifyWhere" />
+		</dynamic>
+	</update>
+	
+	<delete id="delete" parameterClass="serviceItem">
+		delete from tb_service_item where 1=1  
+		<dynamic prepend="">
+			<include refid="ModifyWhere" />
+		</dynamic>
+	</delete>
+	
+	<select id="getList" resultMap="ListResult" parameterClass="map" >
+		select
+			a.service_item_id,
+			a.business_type,
+			a.serviceitem_category_code,
+			a.service_item_name,
+			a.service_item_code,
+			a.working_hours,
+			a.service_price,
+			a.monthly_price,
+			a.subsidy_type,
+			a.maintenance_type,
+			a.service_content,
+			a.service_standards,
+			a.status,
+			a.valid_flag,
+			a.create_time,
+			a.update_time,
+			a.operate_man,
+			a.operate_reason,
+			a.institution_id,
+			a.slv,
+			a.spbm
+		from tb_service_item a
+ 		where ifnull(a.valid_flag,'0')!='1'
+		<dynamic prepend="">
+			<include refid="Where" />
+		</dynamic>
+		<isNotNull prepend="" property="pageSort">
+	 		order by $pageSort$
+		</isNotNull>
+		limit $beginRow$,$pageSize$
+	</select>
+	<select id="getListCount" resultClass="int" parameterClass="map" >
+		select count(1) 
+		from tb_service_item a  
+		where 1=1 
+		and ifnull(a.valid_flag,'0')!='1'
+		<dynamic prepend="">
+			<include refid="Where" />
+		</dynamic>
+	</select>
+	
+	
+	<select id="getListforPackage" resultMap="ListResult" parameterClass="map" >
+		select
+			a.service_item_id,
+			a.business_type,
+			a.serviceitem_category_code,
+			a.service_item_name,
+			a.service_item_code,
+			a.working_hours,
+			a.service_price,
+			a.monthly_price,
+			a.subsidy_type,
+			a.maintenance_type,
+			a.service_content,
+			a.service_standards,
+			a.status,
+			a.valid_flag,
+			a.create_time,
+			a.update_time,
+			a.operate_man,
+			a.operate_reason,
+			a.institution_id,
+			a.slv,
+			a.spbm
+		from tb_service_item a
+ 		where ifnull(a.valid_flag,'0')!='1'
+		<dynamic prepend="">
+			<include refid="Where" />
+		</dynamic>
+		AND a.service_item_id NOT IN(SELECT
+                                 spi.service_item_id
+                               FROM tb_service_package sp
+                                 INNER JOIN tb_service_package_items spi
+                                   ON sp.service_package_id = spi.service_package_id
+                                     <isNotEmpty prepend="and" property="servicePackageId">
+										sp.service_package_id=#servicePackageId#
+									</isNotEmpty>
+                                     )
+		<isNotNull prepend="" property="pageSort">
+	 		order by $pageSort$
+		</isNotNull>
+		limit $beginRow$,$pageSize$
+	</select>
+	<select id="getListforPackageCount" resultClass="int" parameterClass="map" >
+		select count(1) 
+		from tb_service_item a
+		where ifnull(a.valid_flag,'0')!='1'
+		<dynamic prepend="">
+			<include refid="Where" />
+		</dynamic>
+		AND a.service_item_id NOT IN(SELECT
+                                 spi.service_item_id
+                               FROM tb_service_package sp
+                                 INNER JOIN tb_service_package_items spi
+                                   ON sp.service_package_id = spi.service_package_id
+                                      <isNotEmpty prepend="and" property="servicePackageId">
+										sp.service_package_id=#servicePackageId#
+									</isNotEmpty>
+                                     )
+	</select>
+	
+	
+	<select id="getListNoPage" resultMap="ListResult" parameterClass="serviceItem" >
+		select
+			a.service_item_id,
+			a.business_type,
+			a.serviceitem_category_code,
+			a.service_item_name,
+			a.service_item_code,
+			a.working_hours,
+			a.service_price,
+			a.monthly_price,
+			a.subsidy_type,
+			a.maintenance_type,
+			a.service_content,
+			a.service_standards,
+			a.status,
+			a.valid_flag,
+			a.create_time,
+			a.update_time,
+			a.operate_man,
+			a.operate_reason,
+			a.institution_id,
+			a.slv,
+			a.spbm
+		from tb_service_item a 
+		where 1=1
+		and ifnull(a.valid_flag,'0')!='1'
+		<dynamic prepend="">
+			<include refid="Where" />
+		</dynamic>
+	</select>
+	
+	<select id="get" resultMap="Result" parameterClass="serviceItem" >
+		select
+			a.service_item_id,
+			a.business_type,
+			a.serviceitem_category_code,
+			a.service_item_name,
+			a.service_item_code,
+			a.working_hours,
+			a.service_price,
+			a.monthly_price,
+			a.subsidy_type,
+			a.maintenance_type,
+			a.service_content,
+			a.service_standards,
+			a.status,
+			a.valid_flag,
+			a.create_time,
+			a.update_time,
+			a.operate_man,
+			a.operate_reason,
+			a.institution_id,
+			a.slv,
+			a.spbm
+		from tb_service_item a 
+		where 1=1
+		and ifnull(a.valid_flag,'0')!='1'
+		<dynamic prepend="">
+			<include refid="Where" />
+		</dynamic>
+	</select>
+</sqlMap>

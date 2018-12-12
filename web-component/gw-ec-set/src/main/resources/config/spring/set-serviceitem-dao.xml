@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd 
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+    <!-- 服务项	tb_service_item-->
+    <bean id="serviceItemDao" class="com.bjgoodwill.set.serviceitem.dao.ibatis.ServiceItemDaoImpl">
+        <property name="sqlMapClient" ref="sqlMapSetService"/>
+    </bean>
+
+    <!-- 	tb_service_package-->
+    <bean id="servicePackageDao" class="com.bjgoodwill.set.serviceitem.dao.ibatis.ServicePackageDaoImpl">
+        <property name="sqlMapClient" ref="sqlMapSetService"/>
+    </bean>
+
+    <!-- 	tb_service_package_items-->
+    <bean id="servicePackageItemsDao" class="com.bjgoodwill.set.serviceitem.dao.ibatis.ServicePackageItemsDaoImpl">
+        <property name="sqlMapClient" ref="sqlMapSetService"/>
+    </bean>
+    
+    	<!-- 服务项的类别,从字典移植过来	tb_service_category-->
+  	<bean id="serviceCategoryDao" class="com.bjgoodwill.set.serviceitem.dao.ibatis.ServiceCategoryDaoImpl">
+		<property name="sqlMapClient" ref="sqlMapSetService" />
+	</bean>
+</beans>

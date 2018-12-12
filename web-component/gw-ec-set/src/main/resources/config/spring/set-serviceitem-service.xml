@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd 
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+    <!-- 服务项	tb_service_item-->
+    <bean id="serviceItemService" class="com.bjgoodwill.set.serviceitem.service.impl.ServiceItemServiceImpl">
+        <property name="serviceItemDao" ref="serviceItemDao"/>
+    </bean>
+
+    <!-- 	tb_service_package-->
+    <bean id="servicePackageService" class="com.bjgoodwill.set.serviceitem.service.impl.ServicePackageServiceImpl">
+        <property name="servicePackageDao" ref="servicePackageDao"/>
+        <property name="expenseStandardAttributeDao" ref="expenseStandardAttributeDao"/>
+        <property name="expenseStandardDao" ref="expenseStandardDao"/>
+    </bean>
+
+    <!-- 	tb_service_package_items-->
+    <bean id="servicePackageItemsService"
+          class="com.bjgoodwill.set.serviceitem.service.impl.ServicePackageItemsServiceImpl">
+        <property name="servicePackageItemsDao" ref="servicePackageItemsDao"/>
+    </bean>
+    
+    	<!-- 服务项的类别,从字典移植过来	tb_service_category-->
+  	<bean id="serviceCategoryService" class="com.bjgoodwill.set.serviceitem.service.impl.ServiceCategoryServiceImpl">
+		<property name="serviceCategoryDao" ref="serviceCategoryDao" />
+	</bean>
+</beans>
+

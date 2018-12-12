@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+
+	<!--控制台输出 -->
+	<appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<!-- %d为时间，%msg为自己要输出的信息，%n为换行 -->
+			<pattern>
+				%d - %msg%n
+			</pattern>
+		</layout>
+	</appender>
+
+	<!--滚动文件输出 -->
+	<appender name="fileInfoLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<encoder>
+			<pattern>
+				%msg%n
+			</pattern>
+		</encoder>
+		<!--滚动策略，这里使用基于时间的滚动策略，每天产生一个文件 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!--文件输出的路径 -->
+			<fileNamePattern>C:\apache-tomcat-8.0.49\logs\info.%d.log</fileNamePattern>
+		</rollingPolicy>
+	</appender>
+
+	<root level="debug">
+		<appender-ref ref="consoleLog" />
+		<!-- <appender-ref ref="fileInfoLog" /> -->
+	</root>
+
+</configuration>

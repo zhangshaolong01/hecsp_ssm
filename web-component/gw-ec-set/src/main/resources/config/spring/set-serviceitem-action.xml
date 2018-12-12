@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd 
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<!-- 服务项 tb_service_item -->
+	<bean id="serviceItemAction" class="com.bjgoodwill.set.serviceitem.action.ServiceItemAction"
+		scope="prototype">
+		<property name="serviceItemService" ref="serviceItemService" />
+	</bean>
+	<!-- tb_service_package -->
+	<bean id="servicePackageAction"
+		class="com.bjgoodwill.set.serviceitem.action.ServicePackageAction"
+		scope="prototype">
+		<property name="servicePackageService" ref="servicePackageService" />
+	</bean>
+	<!-- tb_service_package_items -->
+	<bean id="servicePackageItemsAction"
+		class="com.bjgoodwill.set.serviceitem.action.ServicePackageItemsAction"
+		scope="prototype">
+		<property name="servicePackageItemsService" ref="servicePackageItemsService" />
+	</bean>
+
+	<!-- 服务项的类别,从字典移植过来 tb_service_category -->
+	<bean id="serviceCategoryAction"
+		class="com.bjgoodwill.set.serviceitem.action.ServiceCategoryAction"
+		scope="prototype">
+		<property name="serviceCategoryService" ref="serviceCategoryService" />
+	</bean>
+</beans>

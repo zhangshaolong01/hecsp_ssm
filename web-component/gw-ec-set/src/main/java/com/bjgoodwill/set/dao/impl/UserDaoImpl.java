@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.bjgoodwill.common.dao.ECBaseDao;
 import com.bjgoodwill.set.dao.IUserDao;
 import com.bjgoodwill.set.model.User;
 /**
@@ -15,10 +16,8 @@ import com.bjgoodwill.set.model.User;
  * @date 2017年5月12日 下午4:19:16
  */
 @Repository
-public class UserDaoImpl implements IUserDao{
+public class UserDaoImpl extends ECBaseDao implements IUserDao{
 
-	@Autowired
-	private SqlSession sqlSession;
 	//mapper文件的namespace
 	private String mapperNamespace = "com.bjgoodwill.set.mapper.User";
 

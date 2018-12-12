@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+    <settings cacheModelsEnabled="true" enhancementEnabled="true" lazyLoadingEnabled="false" maxRequests="20"
+              maxSessions="10" maxTransactions="50" useStatementNamespaces="true"/>
+    <!--公共编码片段-->
+    <sqlMap resource="config/ibatis/mysql/basicsys/CommonSqlWhere.xml"/>
+    <!--服务项	tb_service_item-->
+    <sqlMap resource="config/ibatis/mysql/set/serviceitem/ServiceItem.xml"/>
+    <!--	tb_service_package-->
+    <sqlMap resource="config/ibatis/mysql/set/serviceitem/ServicePackage.xml"/>
+    <!--	tb_service_package_items-->
+    <sqlMap resource="config/ibatis/mysql/set/serviceitem/ServicePackageItems.xml"/>
+    <!--服务项的类别,从字典移植过来	tb_service_category-->
+	<sqlMap resource="config/ibatis/mysql/set/serviceitem/ServiceCategory.xml"/>
+</sqlMapConfig>

@@ -64,6 +64,7 @@
 		<property name="mapperLocations"> <!-- 自动扫描 mapper文件 -->
 			<list>
 				<value >classpath*:/com/bjgoodwill/set/mapper/*Mapper.xml</value>
+				<value >classpath*:/config/mybatis/mysql/set/serviceitem/ServiceItem.xml</value>
 			</list>
 		</property>
 	</bean>
